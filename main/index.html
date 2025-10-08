@@ -8,6 +8,254 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-plane-departure"></i>
+                <span>FlightHub</span>
+            </div>
+           
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Flights</a></li>
+                    <li><a href="#">My Bookings</a></li>
+                    <li><a href="../track/track.html">Track Flight</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Your Perfect Flight</h1>
+                <p>Search and compare flights from hundreds of airlines worldwide</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Form -->
+    <section class="search-container container">
+        <div class="search-tabs">
+            <div class="tab active" data-tab="roundtrip">Round Trip</div>
+            <div class="tab" data-tab="oneway">One Way</div>
+        </div>
+        
+        <div class="promo-toggle">
+            <button id="promoToggle" class="promo-btn">
+                <i class="fas fa-plus-circle"></i> Add Agent Promo
+            </button>
+        </div>
+        
+        <div class="promo-box" id="promoBox">
+            <div class="form-group">
+                <label for="promoCode">Promo Code</label>
+                <input type="text" class="form-control" id="promoCode" placeholder="Enter your promo code">
+            </div>
+        </div>
+        
+        <form class="search-form" id="flightSearchForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="origin">From</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-plane-departure"></i>
+                        <input type="text" class="form-control" id="origin" placeholder="City or Airport" autocomplete="off">
+                        <div class="suggestions-box" id="originSuggestions"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination">To</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-plane-arrival"></i>
+                        <input type="text" class="form-control" id="destination" placeholder="City or Airport" autocomplete="off">
+                        <div class="suggestions-box" id="destinationSuggestions"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="departure">Departure</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="date" class="form-control" id="departure">
+                    </div>
+                </div>
+                
+                <div class="form-group" id="returnGroup">
+                    <label for="return">Return</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="date" class="form-control" id="return">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="passengers">Passengers</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-users"></i>
+                        <select class="form-control" id="passengers">
+                            <option value="1">1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                            <option value="5">5+ Passengers</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search"></i> Search Flights
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="destinations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Destinations</h2>
+                <p>Explore our most booked flight destinations</p>
+            </div>
+            
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1934&q=80" alt="New York">
+                    <div class="destination-info">
+                        <h3>New York</h3>
+                        <p>From $199</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="London">
+                    <div class="destination-info">
+                        <h3>London</h3>
+                        <p>From $249</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80" alt="Paris">
+                    <div class="destination-info">
+                        <h3>Paris</h3>
+                        <p>From $229</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <img src="https://m.media-amazon.com/images/I/91BxOLGIyoL.jpg" alt="Tokyo">
+                    <div class="destination-info">
+                        <h3>Tokyo</h3>
+                        <p>From $599</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose FlightHub</h2>
+                <p>We make flight booking simple and affordable</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3>Best Price Guarantee</h3>
+                    <p>Find the lowest prices on flights from hundreds of airlines worldwide</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure Booking</h3>
+                    <p>Your payment information is safe with our secure booking system</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer service team is available around the clock to help you</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fas fa-plane-departure"></i>
+                        <span>FlightHub</span>
+                    </div>
+                    <p>Your trusted flight booking partner with the best prices and seamless experience.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Flights</a></li>
+                        <li><a href="#">My Bookings</a></li>
+                        <li><a href="#">Track Flight</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Flight Booking</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                        <li><a href="#">Airport Transfer</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Flight Street, Aviation City</li>
+                        <li><i class="fas fa-phone"></i> +1 (123) 456-7890</li>
+                        <li><i class="fas fa-envelope"></i> info@flighthub.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 FlightHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
