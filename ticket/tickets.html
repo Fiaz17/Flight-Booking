@@ -7,8 +7,294 @@
     <link rel="stylesheet" href="./tickets.css">
 </head>
 <body>
-    
+  <header>
+    <h1><i class="fas fa-plane"></i> Generate Your E-Ticket</h1>
+  </header>
 
-    <script src="./tickets.js"></script>
-</body>
+  <div class="container">
+    <!-- Debug Information Panel -->
+    <div class="debug-info" id="debugInfo">
+      <h3><i class="fas fa-bug"></i> Debug Information</h3>
+      <button onclick="toggleDebug()" style="margin-bottom: 0.5rem; padding: 0.25rem 0.5rem; background: var(--primary-color); color: white; border: none; border-radius: 0.25rem; cursor: pointer;">
+        Toggle Debug Info
+      </button>
+      <pre id="debugContent"></pre>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+      
+      <div class="step-indicator">
+        <div class="step completed">
+          <div class="step-circle"><i class="fas fa-check"></i></div>
+          <div class="step-title">Select Flight</div>
+        </div>
+        <div class="step completed">
+          <div class="step-circle"><i class="fas fa-check"></i></div>
+          <div class="step-title">Passenger Info</div>
+        </div>
+        <div class="step active">
+          <div class="step-circle"><i class="fas fa-ticket-alt"></i></div>
+          <div class="step-title">Get Ticket</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <h2>Booking Confirmation</h2>
+      </div>
+      
+      <div class="card-body">
+        <div class="tabs">
+          <button class="tab active" data-tab="outbound">Outbound Flight</button>
+          <button class="tab" data-tab="return" id="returnTab">Return Flight</button>
+        </div>
+        
+        <div id="outbound" class="tab-content active">
+          <div class="flight-info">
+            <div class="flight-route">
+              <div class="flight-route-header">
+                <h3 id="outboundRouteTitle">-</h3>
+                <div class="flight-date" id="outboundFlightDate">-</div>
+              </div>
+              <div class="flight-segments" id="outboundFlightSegments">
+                <!-- Flight segments will be dynamically added here -->
+              </div>
+            </div>
+            
+            <div class="booking-details">
+              <div class="detail-group">
+                <h3>Passenger</h3>
+                <p id="passengerName">-</p>
+              </div>
+              <div class="detail-group">
+                <h3>Email</h3>
+                <p id="passengerEmail">-</p>
+              </div>
+              <div class="detail-group">
+                <h3>Phone</h3>
+                <p id="passengerPhone">-</p>
+              </div>
+              <div class="detail-group">
+                <h3>Flight</h3>
+                <p id="flightName">-</p>
+              </div>
+              <div class="detail-group">
+                <h3>Duration</h3>
+                <p id="flightDuration">-</p>
+              </div>
+              <div class="detail-group">
+                <h3>Price</h3>
+                <p id="flightPrice">-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="return" class="tab-content">
+          <div class="flight-info">
+            <div class="no-data" id="noReturnData">
+              <i class="fas fa-info-circle"></i>
+              <p>No return flight data available</p>
+            </div>
+            <div class="flight-route" id="returnFlightRoute" style="display: none;">
+              <div class="flight-route-header">
+                <h3 id="returnRouteTitle">-</h3>
+                <div class="flight-date" id="returnFlightDate">-</div>
+              </div>
+              <div class="flight-segments" id="returnFlightSegments">
+                <!-- Flight segments will be dynamically added here -->
+              </div>
+            </div>
+            
+            <div class="booking-details" id="returnBookingDetails" style="display: none;">
+              <div class="detail-group">
+                <h3>Passenger</h3>
+                <p id="returnPassengerName">-</p>
+              </div>
+              <div class="detail-group">
+                <h3>Email</h3>
+                <p id="returnPassengerEmail">-</p>
+              </div>
+              <div class="detail-group">
+                <h3>Phone</h3>
+                <p id="returnPassengerPhone">-</p>
+              </div>
+              <div class="detail-group">
+                <h3>Flight</h3>
+                <p id="returnFlightName">-</p>
+              </div>
+              <div class="detail-group">
+                <h3>Duration</h3>
+                <p id="returnFlightDuration">-</p>
+              </div>
+              <div class="detail-group">
+                <h3>Price</h3>
+                <p id="returnFlightPrice">-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="terms-section">
+          <h2>Terms and Conditions</h2>
+          <div class="terms-content">
+            <h3>1. Ticket Information</h3>
+            <p>This electronic ticket (e-ticket) is a valid document for travel. The passenger named on this ticket is entitled to travel on the specified flight(s) and date(s).</p>
+            
+            <h3>2. Check-in Requirements</h3>
+            <p>Passengers must check in at least 2 hours before domestic flights and 3 hours before international flights. Online check-in is available 24 hours before departure.</p>
+            
+            <h3>3. Baggage Allowance</h3>
+            <ul>
+              <li>Economy Class: 1 piece of checked baggage (23kg) + 1 carry-on (7kg)</li>
+              <li>Business Class: 2 pieces of checked baggage (23kg each) + 1 carry-on (10kg)</li>
+              <li>First Class: 3 pieces of checked baggage (23kg each) + 2 carry-ons (10kg each)</li>
+            </ul>
+            
+            <h3>4. Cancellation and Refund</h3>
+            <p>Cancellation policies vary by fare type. Please refer to your fare rules for specific cancellation and refund conditions.</p>
+            
+            <h3>5. Changes to Booking</h3>
+            <p>Changes to flight dates and times are subject to availability and may incur additional fees. Name changes are not permitted after booking.</p>
+            
+            <h3>6. Travel Documents</h3>
+            <p>Passengers are responsible for ensuring they have all necessary travel documents, including valid passports, visas, and any required health certificates.</p>
+          </div>
+          
+          <div class="agreement">
+            <input type="checkbox" id="agreeTerms">
+            <label for="agreeTerms">I have read and agree to the <a href="#">Terms and Conditions</a></label>
+          </div>
+          
+          <button id="generateBtn" class="btn btn-primary btn-block" disabled>
+            <i class="fas fa-ticket-alt"></i> Generate E-Ticket
+          </button>
+          
+          <div id="errorMessage" class="message message-error">
+            <i class="fas fa-exclamation-circle"></i> Please agree to the terms and conditions to generate your e-ticket.
+          </div>
+          <div id="successMessage" class="message message-success">
+            <i class="fas fa-check-circle"></i> Your e-ticket has been generated successfully!
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="ticketSection" class="ticket-section">
+      <div class="ticket">
+        <div class="ticket-header">
+          <h2>E-Ticket</h2>
+          <div class="ticket-number" id="ticketNumber">-</div>
+        </div>
+        
+        <div class="ticket-body">
+          <div class="ticket-tabs">
+            <button class="ticket-tab active" data-ticket-tab="outbound">Outbound Flight</button>
+            <button class="ticket-tab" data-ticket-tab="return" id="returnTicketTab">Return Flight</button>
+          </div>
+          
+          <div id="outboundTicket" class="ticket-content active">
+            <div class="ticket-flight-info">
+              <div class="ticket-flight-details">
+                <div class="ticket-flight-route" id="outboundTicketRouteTitle">-</div>
+                <div class="ticket-flight-date" id="outboundTicketFlightDate">-</div>
+              </div>
+            </div>
+            
+            <div class="ticket-segments" id="outboundTicketFlightSegments">
+              <!-- Flight segments will be dynamically added here -->
+            </div>
+            
+            <div class="ticket-passenger-info">
+              <div class="ticket-detail">
+                <h3>PASSENGER</h3>
+                <p id="ticketPassenger">-</p>
+              </div>
+              <div class="ticket-detail">
+                <h3>FLIGHT</h3>
+                <p id="ticketFlight">-</p>
+              </div>
+              <div class="ticket-detail">
+                <h3>DEPARTURE</h3>
+                <p id="ticketDeparture">-</p>
+              </div>
+              <div class="ticket-detail">
+                <h3>ARRIVAL</h3>
+                <p id="ticketArrival">-</p>
+              </div>
+              <div class="ticket-detail">
+                <h3>DURATION</h3>
+                <p id="ticketDuration">-</p>
+              </div>
+              <div class="ticket-detail">
+                <h3>PRICE</h3>
+                <p id="ticketPrice">-</p>
+              </div>
+            </div>
+          </div>
+          
+          <div id="returnTicket" class="ticket-content">
+            <div class="no-data" id="noReturnTicketData">
+              <i class="fas fa-info-circle"></i>
+              <p>No return flight data available</p>
+            </div>
+            <div id="returnTicketContent" style="display: none;">
+              <div class="ticket-flight-info">
+                <div class="ticket-flight-details">
+                  <div class="ticket-flight-route" id="returnTicketRouteTitle">-</div>
+                  <div class="ticket-flight-date" id="returnTicketFlightDate">-</div>
+                </div>
+              </div>
+              
+              <div class="ticket-segments" id="returnTicketFlightSegments">
+                <!-- Flight segments will be dynamically added here -->
+              </div>
+              
+              <div class="ticket-passenger-info">
+                <div class="ticket-detail">
+                  <h3>PASSENGER</h3>
+                  <p id="returnTicketPassenger">-</p>
+                </div>
+                <div class="ticket-detail">
+                  <h3>FLIGHT</h3>
+                  <p id="returnTicketFlight">-</p>
+                </div>
+                <div class="ticket-detail">
+                  <h3>DEPARTURE</h3>
+                  <p id="returnTicketDeparture">-</p>
+                </div>
+                <div class="ticket-detail">
+                  <h3>ARRIVAL</h3>
+                  <p id="returnTicketArrival">-</p>
+                </div>
+                <div class="ticket-detail">
+                  <h3>DURATION</h3>
+                  <p id="returnTicketDuration">-</p>
+                </div>
+                <div class="ticket-detail">
+                  <h3>PRICE</h3>
+                  <p id="returnTicketPrice">-</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="ticket-footer">
+          <p>This is an electronic ticket. Please present this ticket along with a valid ID at the airport.</p>
+        </div>
+      </div>
+      
+      <button id="downloadBtn" class="btn btn-success btn-block">
+        <i class="fas fa-download"></i> Download E-Ticket (PDF)
+      </button>
+    </div>
+  </div>
+
+  <script src="./tickets.js"></script>
+</body>    
 </html>
