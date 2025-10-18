@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Flight Tracker - Ting Ting Airlines</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="track.css">
+  <script src="track.js" defer></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-plane"></i>
+        <span>Ting-Ting</span>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="../main/index.html">Home</a></li>
+          <li><a href="#" class="active">Flight Tracker</a></li>
+          <li><a href="https://www.flightradar24.com/data/airports/dac">Todays Flight</a></li>
+          <li><a href="../contact/contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="tracker-container">
+      <h1>Live Flight Tracker</h1>
+      <p>Enter your flight number to see live status:</p>
+      
+      <div class="search-box">
+        <input type="text" id="flightInput" placeholder="e.g. EK202">
+        <button id="trackBtn">Track Flight</button>
+      </div>
+      
+      <div class="flight-results" id="flightResults" style="display: none;">
+        <!-- Flight results will be displayed here -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>About Ting Ting</h3>
+          <p>Your trusted partner for seamless travel experiences.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Customer Service</h3>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Refund Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2023 Ting Ting Airlines. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
